@@ -1,0 +1,5 @@
+services:
+  dns:
+    container_name: alpine_dns
+    build: .
+    network_mode: bridge

@@ -1,0 +1,35 @@
+# TODO:
+# - persisted volume
+# - image in private image registry
+
+# Includes one kafka broker and one zookeeper server
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kafka
+  labels:
+    purpose: storage
+    purpose: orchestration
+    app: kafka
+spec:
+  containers:
+    - name: kafka_broker
+      image: kafka:latest
+      ports: 
+        - containerPort: 9092
+    
+    - name: zookeeper 
+      image: docker.io/zookeeper:3.8.1
+      ports:
+        - containerPort: 2181
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-nodeport
+spec:
+  type: NodePort
+  ports:
+    
+    port: 9092
+    targetPort: 9092

@@ -1,0 +1,6 @@
+services:
+  vault:
+    image: vault:1.13.2
+    container_name: vault
+    ports: 
+      - "8200:8200"

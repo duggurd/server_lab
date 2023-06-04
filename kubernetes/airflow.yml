@@ -1,0 +1,34 @@
+# TODO:
+# - Persisted volume
+# - image in private image registry
+
+# Defining the pod that runs the airflow instance
+apiVersion: v1
+kind: Pod
+metadata:
+  name: airflow
+  labels:
+    purpose: orchestration
+    app: airflow
+spec:
+  containers:
+    - name: airflow
+      image:  docker.io/apache/airflow:slim-2.6.1-python3.10
+      command: ["airflow"]
+      args: ["standalone"]
+      ports:
+        - containerPort: 8080
+---
+# Defining the service that forwards ports from pod to host 
+apiVersion: v1
+kind: Service
+metadata:
+  name: airflow-nodeport
+spec:
+  type: NodePort
+  selector:
+    app: airflow
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

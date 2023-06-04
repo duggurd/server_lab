@@ -1,0 +1,14 @@
+services:
+  dbt_postgres:
+    container_name: dbt_postgres
+    build: ./alpine.dockerfile
+    volumes:
+      - dbt_postgres:/dbt
+    ports:
+      -
+    network_mode: bridge
+    restart: on-failure
+
+volumes:
+  dbt_postgres:
+    name: dbt_postgres

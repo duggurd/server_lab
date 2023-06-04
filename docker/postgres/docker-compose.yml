@@ -1,0 +1,15 @@
+services:
+  postgresql:
+    container_name: postgresql
+    build: .
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgresql:/var/lib/postgresql/data
+    env_file: .env
+    network_mode: bridge
+    restart: on-failure
+
+volumes:
+  postgresql:
+    name: postgresql

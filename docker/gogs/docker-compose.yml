@@ -1,0 +1,16 @@
+services:
+  gogs:
+    container_name: gogs
+    build: .
+    volumes:
+      - gogs:/data
+      #- ./app.ini:/data/gogs/conf/app.ini
+    ports:
+      - "10022:22"
+      - "3000:3000"
+    network_mode: bridge
+    restart: on-failure
+
+volumes:
+  gogs:
+    name: gogs

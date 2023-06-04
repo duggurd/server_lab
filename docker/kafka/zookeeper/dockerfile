@@ -1,0 +1,2 @@
+FROM ubuntu/zookeeper
+COPY zookeeper.properties /opt/kafka/config/zookeeper.properties

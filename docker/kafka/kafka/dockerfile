@@ -1,0 +1,2 @@
+FROM ubuntu/kafka
+COPY server.properties /opt/kafka/config/server.properties

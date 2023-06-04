@@ -1,0 +1,2 @@
+FROM postgres:alpine
+COPY ./init_gogs.sql /docker-entrypoint-initdb.d/init_gogs.sql

@@ -1,0 +1,10 @@
+services:
+  spark:
+    image: apache/spark-py:v3.4.0
+    container_name: spark
+    ports:
+      - "4040:4040"
+    # entrypoint: /opt/spark/bin/pyspark
+    # command: "/opt/entrypoint.sh /opt/spark/bin/pyspark"
+    command: "/opt/spark/bin/pyspark"
+    tty: true
